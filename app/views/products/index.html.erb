@@ -1,0 +1,38 @@
+
+
+
+<h1>Listing products</h1>
+<%= link_to 'New Product', new_product_path %>
+
+<%= table_for(@products) do |product|
+  product.data :actions=>:all
+ end %>
+
+
+<hr />
+<table width="505">
+<% @products.each do |product| %>
+<tr>
+<td><%= product.name %></td>
+<td><%= product.brand %></td>
+<td><%= product.price %></td>
+<td><%= product.quantity %></td>
+<td><%= product.sku %></td>
+<td><%#= link_to 'With product Route', withproductname_url(:name=>"#{product.name}", :id=>product.id) %><br/>
+	<%= link_to 'without product Route', chitresh_url(:name=>"#{product.name}", :id=>"#{product.id}") %>
+	
+</td>
+</tr>
+<% end %>
+</table>
+
+<% @a =Time.now%>
+<%= debug sort_data(@products) %>
+<%= Time.now-@a %>
+
+
+<%#= debug sort_data(@products) %>
+
+<%= poly("R1R1R1")%>
+
+
