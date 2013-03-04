@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
         redirect_to new_user_session_url
         return false
       end
+      
     end
 
     def require_no_user

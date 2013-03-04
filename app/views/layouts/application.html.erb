@@ -5,55 +5,43 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
-
 </head>
 <body onload="doInitGrid();">
 <script>
  var mygrid;
     function doInitGrid(){
  	mygrid = new dhtmlXGridObject('mygrid_container');
- 
     mygrid.setImagePath("codebase/imgs/");
- 
     mygrid.setHeader("Model,Qty,Price");
- 
     mygrid.setInitWidths("*,150,150");
- 
     mygrid.setColAlign("left,right,right");
- 
     mygrid.setSkin("light");
- 
     mygrid.init();
-     
     mygrid.loadXML("/products/dbaction.xml.builder");
-    
     }
-    
-    
     $(document).ready(function() {
     $('.progress .bar').progressbar();
 });
 </script>
     
-    
-    
-    <span style="float: left; text-align: left;">
-    	
-<h1>Authlogic Example App</h1>
-<%= pluralize User.logged_in.count, "user" %> currently logged in<br />
- <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
-<br />
-<br />
-
+<span style="float: &#x2190;; text-align: left;">
 
 <% if !current_user %>
   <%= link_to "Register", new_account_path %> |
   <%= link_to "Log In", new_user_session_path %> |
 <% else %>
-  <%= link_to "My Account", account_path %> |
-  <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+  <%= link_to "Product List", products_path %> |
+  <%= link_to 'New Product', new_product_path %> ||
+
+  <%= link_to "My Account", account_path(current_user) %> |
+  <%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>:
 <% end %>
+
+<%= pluralize User.logged_in.count, "user" %> <%= current_user.blank? ? "was" :"currently" %> logged in<br />
+ <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
+<hr />  
+</span>
+  
 
 <p style="color: green"><%= flash[:notice] %></p>
 

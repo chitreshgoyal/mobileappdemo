@@ -1,22 +1,22 @@
-
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
-   #before_filter :require_user, :only => [:index, :show, :edit, :update]
-   protect_from_forgery :except => [:create, :update, :delete]
+   before_filter :require_user, :only => [:index, :show, :edit, :update, :delete]
+#   protect_from_forgery :except => [:create, :update, :delete]
  
   def index
-  
-    @products = Product.find(:all)
+    @products = Product.all
     @users = Product.find(:all)
-
-
-
-
-
+      #--------amazon cloud search-----------------------------------------------------------
+      #searcher = CloudSearch::Searcher.new
+      #@resp     = searcher.with_fields(:id, :actor, :director, :title, :year, :text_relevance)
+      #         .with_query("star wars")
+      #         .search
+      #--------------------------------------------------------------------------------------
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @products }
+      format.json { render :json => @products }
+      format.xml { render :xml => @products }
     end
   end
 
@@ -34,12 +34,29 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
-    @product = Product.new
+    #-------------------------------------------------------------------------------------------
+    document = CloudSearch::Document.new(:type    => "add", # or "delete"
+                                         :version => 12345,
+                                         :id      => 679,
+                                         :lang    => :en,
+                                         :fields  => {
+                                                 :actor => ["PSI Marques", "WilPSI Fernandes"], 
+                                                 :director => ["PSI, George"], 
+                                                 :text_relevance => '309',
+                                                 :title => "Star Wars"}) 
+    
+    indexer = CloudSearch::Indexer.new
+    indexer << document # add as many documents as you want (CloudSearch currently sets a limit of 5MB per documents batch)
+    #sindexer.index
+    render :text =>'<pre>'+CloudSearch.config.document_url.to_yaml and return true 
+    #-------------------------------------------------------------------------------------------
+    #@product = Product.new
+    
+    #respond_to do |format|
+    #  format.html # new.html.erb
+    #  format.json { render json: @product }
+    #end
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @product }
-    end
   end
 
   # GET /products/1/edit
@@ -71,12 +88,15 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update_attributes(params[:product])
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.xml  { head :ok }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
+        format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # DELETE /products/1
@@ -90,10 +110,6 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  
-  
-  
   
   def dbaction
     #called for all db actions

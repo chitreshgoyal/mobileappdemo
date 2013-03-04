@@ -2,32 +2,16 @@ Mobileapp::Application.routes.draw do
 
 
   resources :user_sessions
-  resource :user_session
-  
   resources :products
+  resources :users  # give us our some normal resource routes for users
+  resources :users, :as => 'accounts'  # a convenience route  
   
-  resource :account, :controller => "users"
-  
-  match 'login' => "user_sessions#new",      :as => :login
+  match '/login', :to => "user_sessions#new",      :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   
-  resources :users  # give us our some normal resource routes for users
-  resource :user, :as => 'account'  # a convenience route
- 
-   
   match 'signup' => 'users#new', :as => :signup
-   
-  
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-  
   
   match 'productlist' => 'products#index', :as=>'productpage'
-  #match 'product/:name' => 'products#product_info', :as=>'withproductname'
-  #match 'product/:id' => 'products#product_info', :as=>'withproductid'
-  
-  #match '/:name' => 'products#product_info', :as=> :chitresh
-  
   match "/:name" => "products#product_info", :as => :chitresh
   
   # Sample of regular route:

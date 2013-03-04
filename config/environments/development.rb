@@ -35,3 +35,8 @@ Mobileapp::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+CloudSearch.configure do |config|
+  config.domain_id   = "pl6u4t3elu7dhsbwaqbsy3y6be"
+  config.domain_name = "imdb-movies"
+end
