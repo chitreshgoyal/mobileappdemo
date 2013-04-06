@@ -6,7 +6,7 @@ Mobileapp::Application.routes.draw do
   resources :users  # give us our some normal resource routes for users
   resources :users, :as => 'accounts'  # a convenience route  
   
-  match '/login', :to => "user_sessions#new",      :as => :login
+  match 'login', :to => "user_sessions#new", :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   
   match 'signup' => 'users#new', :as => :signup
@@ -61,7 +61,7 @@ Mobileapp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
    #root :to => 'products#index'
-   root :to => 'users#new'
+   root :to => 'user_sessions#new'
 
   # See how all your routes lay out with "rake routes"
 
