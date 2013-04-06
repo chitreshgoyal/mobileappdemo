@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     #-------------------------------------------------------------------------------------------
+=begin  
     document = CloudSearch::Document.new(:type    => "add", # or "delete"
                                          :version => 12345,
                                          :id      => 679,
@@ -48,14 +49,15 @@ class ProductsController < ApplicationController
     indexer = CloudSearch::Indexer.new
     indexer << document # add as many documents as you want (CloudSearch currently sets a limit of 5MB per documents batch)
     #sindexer.index
-    render :text =>'<pre>'+CloudSearch.config.document_url.to_yaml and return true 
+    render :text =>'<pre>'+CloudSearch.config.document_url.to_yaml and return true
+=end 
     #-------------------------------------------------------------------------------------------
-    #@product = Product.new
+    @product = Product.new
     
-    #respond_to do |format|
-    #  format.html # new.html.erb
-    #  format.json { render json: @product }
-    #end
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @product }
+    end
 
   end
 
