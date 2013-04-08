@@ -1,17 +1,49 @@
+<fieldset>
 <%= render "shared/error_messages", :target => @user %>
 
-<%= form.label :name %><br />
-<%= form.text_field :name, :class=> "span3" %>
+	<!-- User-name input-->
+    <div class="control-group">
+        <%= form.label :name, :class=> "control-label" %>
+        <div class="controls">
+			<%= form.text_field :name, :class=> "input-xlarge", :placeholder=> "Ex. Chitresh Goyal" %>
+            <p class="help-block"></p>
+        </div>
+    </div>
 
-<%= form.label :email %><br />
-<%= form.text_field :email, :class=> "span3" %>
+	<!-- User-email input-->
+    <div class="control-group">
+        <%= form.label :email, :class=> "control-label" %>
+        <div class="controls">
+			<%= form.text_field :email, :class=> "input-xlarge", :placeholder=> "Ex. chitresh@gmail.com" %>
+            <p class="help-block"></p>
+        </div>
+    </div>
 
-<%= form.label :login %><br />
-<%= form.text_field :login, :class=> "span3" %>
+	<!-- User-login input-->
+    <div class="control-group">
+        <%= form.label :login, :class=> "control-label" %>
+        <div class="controls">
+			<%= form.text_field :login, :class=> "input-xlarge", :placeholder=> "Ex. chitresh@gmail.com" %>
+            <p class="help-block"></p>
+        </div>
+    </div>
 
-<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
-<%= form.password_field :password, :class=> "span3" %>
+	<!-- User-password input-->
+    <div class="control-group">
+        <%= form.label :password, :class=> "control-label" %>
+        <div class="controls">
+			<%= form.text_field :password, :class=> "input-xlarge", :placeholder=> "Ex. abc@12_3" %>
+            <p class="help-block"></p>
+        </div>
+    </div>
 
-<%= form.label :password_confirmation %><br />
-<%= form.password_field :password_confirmation, :class=> "span3" %>
+	<!-- User-confirm-password input-->
+    <div class="control-group">
+        <%= form.label :password_confirmation, :class=> "control-label" %>
+        <div class="controls">
+			<%= form.text_field :password_confirmation, :class=> "input-xlarge", :placeholder=> "Ex. abc@12_3" %>
+            <p class="help-block"></p>
+        </div>
+    </div>
+</fieldset>
 

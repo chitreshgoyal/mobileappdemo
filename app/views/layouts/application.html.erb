@@ -22,36 +22,42 @@
 	      <div class="nav-collapse collapse"> 
 	        <ul class="nav"> 
 			<% if !current_user %>
-			  <li><%= link_to "Register", new_account_path %></li>
+			  <li><%= link_to "Sign Up", signup_path %></li>
 			  <li class="active"><%= link_to "Log In", login_path %></li>
 			<% else %>
-			  <li class="active"><%= link_to "Product List", products_path %></li>
-			  <li><%= link_to 'New Product', new_product_path %></li>
-			  <li><%= link_to "My Account", account_path(current_user) %></li>
-			  <li><%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
+			  <li class="active">
+			  <%= link_to(products_path) do %>
+			  		<i class="icon-align-justify"></i>	<strong>Product List</strong></a>
+			  <% end %>
+			  </li>
+			  <li>
+			  <%= link_to(new_product_path) do %>
+			  		<i class="icon-glass"></i> 	<strong>New Product</strong></a>
+			  <% end %>
+			  </li>
+			  <li><%= link_to(account_path(current_user)) do %>
+			  		<i class="icon-user"></i> 	<strong>My Account</strong></a>
+			  <% end %>
+			  </li>
+			  <li>
+			  <%= link_to(logout_path, :method => :delete, :confirm => "Are you sure you want to logout?") do %>
+			  		<i class="icon-off"></i>  		<strong>Logout</strong>
+			  <% end %>
+			  </li>
 			<% end %>
 	        <li class="dropdown"> 
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> 
                 <ul class="dropdown-menu"> 
                   <li><a href="#">Action</a></li> 
                   <li><a href="#">Another action</a></li> 
-                  <li><a href="#">Something else here</a></li> 
                   <li class="divider"></li> 
                   <li class="nav-header">Nav header</li> 
                   <li><a href="#">Separated link</a></li> 
-                  <li><a href="#">One more separated link</a></li> 
                 </ul> 
               </li> 
 	        </ul> 
 	      </div><!--/.nav-collapse --> 
-			
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-  <li><a tabindex="-1" href="#">Action</a></li>
-  <li><a tabindex="-1" href="#">Another action</a></li>
-  <li><a tabindex="-1" href="#">Something else here</a></li>
-  <li class="divider"></li>
-  <li><a tabindex="-1" href="#">Separated link</a></li>
-</ul>
+		
 	    </div> 
 	  </div> 
 	</div> 
