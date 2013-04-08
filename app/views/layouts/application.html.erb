@@ -4,50 +4,63 @@
   <title>Mobileapp</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+	<div class="navbar"> 
+	  <div class="navbar-inner"> 
+	    <div class="container" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+	      
+	      <button type="button" class="btn btn-navbar"> 
+	        <span class="icon-bar"></span> 
+	        <span class="icon-bar"></span> 
+	        <span class="icon-bar"></span> 
+	      </button> 
+	      <a class="brand" href="#">PhoneGap</a> 
 	
-		<div class="navbar"> 
-		  <div class="navbar-inner"> 
-		    <div class="container" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
-		      
-		      <button type="button" class="btn btn-navbar"> 
-		        <span class="icon-bar"></span> 
-		        <span class="icon-bar"></span> 
-		        <span class="icon-bar"></span> 
-		      </button> 
-		      <a class="brand" href="#">PhoneGap</a> 
-		
-		      <div class="nav-collapse collapse"> 
-		        <ul class="nav"> 
-				<% if !current_user %>
-				  <li><%= link_to "Register", new_account_path %></li>
-				  <li class="active"><%= link_to "Log In", login_path %></li>
-				<% else %>
-				  <li class="active"><%= link_to "Product List", products_path %></li>
-				  <li><%= link_to 'New Product', new_product_path %></li>
-				  <li><%= link_to "My Account", account_path(current_user) %></li>
-				  <li><%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
-				<% end %>
-		        </ul> 
-		      </div><!--/.nav-collapse --> 
-				
-		    </div> 
-		  </div> 
-		</div> 
+	      <div class="nav-collapse collapse"> 
+	        <ul class="nav"> 
+			<% if !current_user %>
+			  <li><%= link_to "Register", new_account_path %></li>
+			  <li class="active"><%= link_to "Log In", login_path %></li>
+			<% else %>
+			  <li class="active"><%= link_to "Product List", products_path %></li>
+			  <li><%= link_to 'New Product', new_product_path %></li>
+			  <li><%= link_to "My Account", account_path(current_user) %></li>
+			  <li><%= link_to "Logout", logout_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
+			<% end %>
+	        <li class="dropdown"> 
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> 
+                <ul class="dropdown-menu"> 
+                  <li><a href="#">Action</a></li> 
+                  <li><a href="#">Another action</a></li> 
+                  <li><a href="#">Something else here</a></li> 
+                  <li class="divider"></li> 
+                  <li class="nav-header">Nav header</li> 
+                  <li><a href="#">Separated link</a></li> 
+                  <li><a href="#">One more separated link</a></li> 
+                </ul> 
+              </li> 
+	        </ul> 
+	      </div><!--/.nav-collapse --> 
+			
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+  <li><a tabindex="-1" href="#">Action</a></li>
+  <li><a tabindex="-1" href="#">Another action</a></li>
+  <li><a tabindex="-1" href="#">Something else here</a></li>
+  <li class="divider"></li>
+  <li><a tabindex="-1" href="#">Separated link</a></li>
+</ul>
+	    </div> 
+	  </div> 
+	</div> 
 		
 	<div class="alert alert-block">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<%= pluralize User.logged_in.count, "user" %> <%= current_user.blank? ? "" :"currently" %> logged in !
 		<!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
 	</div>
-	bootsnip.com
-    <% if flash[:notice] %>
-    <div class="alert alert-success">
-        <a class="close" data-dismiss="alert" href="#">x</a><%= flash[:notice] %>
-    </div>   
-    <% end %>
     
 <%= yield %>
 

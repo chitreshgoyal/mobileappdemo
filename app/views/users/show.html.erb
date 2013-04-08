@@ -1,36 +1,49 @@
-<p>
-<b>Email:</b>
-<%=h @user.email %>
-</p>
+<% if flash[:notice] %>
+<div class="alert alert-success">
+    <a class="close" data-dismiss="alert" href="#">x</a><%= flash[:notice] %>
+</div>   
+<% end %>
 
-<p>
-<b>Login count:</b>
-<%=h @user.login_count %>
-</p>
+<div class="container well"> 
+		<div class="row">
+			<div class="span1">
+				<a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail">
+					<%= image_tag "http://critterapp.pagodabox.com/img/user.jpg" %>
+				</a>
+			</div>
+			<div class="span3">
+				<p><%= @user.role.name%></p>
+	          	
+	          	<p><strong><%=h @user.name.capitalize %></strong></p>
+				
+				<span class=" badge badge-warning">8 messages</span> <span class=" badge badge-info">15 followers</span>
+			</div>
+		</div>
 
-<p>
-<b>Last request at:</b>
-<%=h @user.last_request_at %>
-</p>
-
-<p>
-<b>Last login at:</b>
-<%=h @user.last_login_at %>
-</p>
-
-<p>
-<b>Current login at:</b>
-<%=h @user.current_login_at %>
-</p>
-
-<p>
-<b>Last login ip:</b>
-<%=h @user.last_login_ip %>
-</p>
-
-<p>
-<b>Current login ip:</b>
-<%=h @user.current_login_ip %>
-</p>
-
-<%= link_to 'Edit Account', edit_account_path %>
+		<div class="row">
+			<div class="span5">
+				<p><b>Email:</b>
+					<%=h @user.email %></p>
+				
+				<p><b>Login count:</b>
+					<%=h @user.login_count %></p>
+		
+				<p><b>Last request at:</b>
+					<%=h @user.last_request_at %></p>
+		
+				<p><b>Last login at:</b>
+		          	<%=h @user.last_login_at %></p>
+		
+				<p><b>Current login at:</b>
+		          	<%=h @user.current_login_at %></p>
+		
+				<p><b>Last login ip:</b>
+		          	<%=h @user.last_login_ip %></p>
+				
+				<p><b>Current login ip:</b>
+		          	<%=h @user.current_login_ip %></p>
+			</div>
+		</div>
+		<%= link_to 'Edit Account', edit_account_path, :class=> "btn btn-primary pull-right" %>
+		<div class="clearfix"></div>
+</div>

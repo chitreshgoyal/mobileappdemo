@@ -1,22 +1,17 @@
 <%= render "shared/error_messages", :target => @user %>
 
-<p>
 <%= form.label :name %><br />
-<%= form.text_field :name %>
-</p>
-<p>
+<%= form.text_field :name, :class=> "span3" %>
+
 <%= form.label :email %><br />
-<%= form.text_field :email %>
-</p>
-<p>
+<%= form.text_field :email, :class=> "span3" %>
+
 <%= form.label :login %><br />
-<%= form.text_field :login %>
-</p>
-<p>
+<%= form.text_field :login, :class=> "span3" %>
+
 <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
-<%= form.password_field :password %>
-</p>
-<p>
+<%= form.password_field :password, :class=> "span3" %>
+
 <%= form.label :password_confirmation %><br />
-<%= form.password_field :password_confirmation %>
-</p>
+<%= form.password_field :password_confirmation, :class=> "span3" %>
+
