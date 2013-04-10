@@ -32,7 +32,7 @@
     <div class="control-group">
         <%= form.label :password, :class=> "control-label" %>
         <div class="controls">
-			<%= form.text_field :password, :class=> "input-xlarge", :placeholder=> "Ex. abc@12_3" %>
+			<%= form.password_field :password, :class=> "input-xlarge", :placeholder=> "Ex. abc@12_3" %>
             <p class="help-block"></p>
         </div>
     </div>
@@ -41,9 +41,11 @@
     <div class="control-group">
         <%= form.label :password_confirmation, :class=> "control-label" %>
         <div class="controls">
-			<%= form.text_field :password_confirmation, :class=> "input-xlarge", :placeholder=> "Ex. abc@12_3" %>
+			<%= form.password_field :password_confirmation, :class=> "input-xlarge", :placeholder=> "Ex. abc@12_3" %>
             <p class="help-block"></p>
         </div>
     </div>
+    
+    <%= form.hidden_field :role_id, :value=>3 %>
 </fieldset>
 

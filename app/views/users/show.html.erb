@@ -3,47 +3,33 @@
     <a class="close" data-dismiss="alert" href="#">x</a><%= flash[:notice] %>
 </div>   
 <% end %>
-
-<div class="container well"> 
-		<div class="row">
-			<div class="span1">
-				<a href="http://critterapp.pagodabox.com/others/admin" class="thumbnail">
-					<%= image_tag "http://critterapp.pagodabox.com/img/user.jpg" %>
-				</a>
-			</div>
-			<div class="span3">
+<div class="container">
+<div class="span6 well">
+	<div class="row">
+		<div class="span1">
+				<%= link_to image_tag("user.jpg", :class => "img-circle"),{:action => 'show', :controller => 'users'}, {:class=>"thumbnail"} %>
+		</div>
+		<div class="span4">		
 				<p><%= @user.role.name.capitalize %></p>
-	          	
-	          	<p><strong><%=h @user.name.capitalize %></strong></p>
-				
-				<span class=" badge badge-warning">8 messages</span> <span class=" badge badge-info">15 followers</span>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="span5">
-				<p><b>Email:</b>
-					<%=h @user.email %></p>
-				
-				<p><b>Login count:</b>
-					<%=h @user.login_count %></p>
-		
-				<p><b>Last request at:</b>
-					<%=h @user.last_request_at %></p>
-		
-				<p><b>Last login at:</b>
-		          	<%=h @user.last_login_at %></p>
-		
-				<p><b>Current login at:</b>
-		          	<%=h @user.current_login_at %></p>
-		
-				<p><b>Last login ip:</b>
-		          	<%=h @user.last_login_ip %></p>
-				
-				<p><b>Current login ip:</b>
-		          	<%=h @user.current_login_ip %></p>
-			</div>
-		</div>
-		<%= link_to 'Edit Account', edit_account_path, :class=> "btn btn-primary pull-right" %>
-		<div class="clearfix"></div>
+	          	<p><strong><%= @user.name.capitalize %></strong></p>
+				<span class=" badge badge-warning">8 messages</span> 
+				<span class=" badge badge-info">15 followers</span>
+		</div>		
+	</div>
+	<br />
+	<div class="row">
+		<div class="span5">
+				<p><b>Email:</b> <%= @user.email %></p>
+				<p><b>Login count:</b> <%= @user.login_count %></p>
+				<p><b>Last request at:</b> <%= @user.last_request_at %></p>
+				<p><b>Last login at:</b> <%= @user.last_login_at %></p>
+				<p><b>Current login at:</b> <%= @user.current_login_at %></p>
+				<p><b>Last login ip:</b> <%= @user.last_login_ip %></p>
+				<p><b>Current login ip:</b><%= @user.current_login_ip %></p>
+				<%= link_to(edit_account_path, :class=> "btn btn-primary") do %>
+				<i class="icon-edit icon-white"></i> <strong>Edit</strong>
+				<% end %>
+		</div>		
+	</div>
+</div>
 </div>

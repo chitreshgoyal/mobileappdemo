@@ -3,6 +3,17 @@
     <h3>Sign Up</h3>
 	<%= form_for(@user,:html => {:class=> "form-horizontal" }) do |f| %>	
 		<%= render :partial => "form",  :object => f, :locals => { :user => @user } %>
+		
+		<!-- Captcha-Code-->
+	    <div class="control-group">
+	        <%= f.label :captcha, :class=> "control-label" %>
+	        <div class="controls">
+	            <%= f.simple_captcha :label => "User verification", :placeholder=> "..." %>
+	        </div>
+	    </div>
+
+		
+		
 		<%= f.submit "Register", :class=> "btn btn-primary pull-right" %>
 		<div class="clearfix"></div>
 	<% end %>

@@ -1,0 +1,25 @@
+Gemfile:
+
+	gem "galetahub-simple_captcha", :require => "simple_captcha"
+
+Setup:
+	
+	rails generate simple_captcha
+
+	rake db:migrate
+
+
+Model Based:
+	
+	class User  ActiveRecord::Base
+	  apply_simple_captcha
+	end
+
+FormBuilder helper:
+
+	<%= form.simple_captcha :label => "Enter numbers.." %>
+	
+
+Src:
+	
+	http://rubydoc.info/gems/galetahub-simple_captcha/0.1.5/frames

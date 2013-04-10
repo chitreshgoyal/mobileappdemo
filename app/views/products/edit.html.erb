@@ -1,6 +1,9 @@
-<h1>Editing product</h1>
+<div class="container well"> 
+	<div class="span3">
+		<h3>Editing product</h3>
+		
+		<%= link_to 'Back', products_path, :class=> "btn btn-success btn-small" %>
+		<%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+	</div>
+</div>

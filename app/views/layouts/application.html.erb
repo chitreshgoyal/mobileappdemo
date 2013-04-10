@@ -21,40 +21,49 @@
 	
 	      <div class="nav-collapse collapse"> 
 	        <ul class="nav"> 
+
 			<% if !current_user %>
-			  <li><%= link_to "Sign Up", signup_path %></li>
-			  <li class="active"><%= link_to "Log In", login_path %></li>
+				<!-- User-logout-navbar -->
+				<li><%= link_to "Sign Up", signup_path %></li>
+				<li class="active"><%= link_to "Log In", login_path %></li>
 			<% else %>
-			  <li class="active">
-			  <%= link_to(products_path) do %>
-			  		<i class="icon-align-justify"></i>	<strong>Product List</strong></a>
-			  <% end %>
-			  </li>
-			  <li>
-			  <%= link_to(new_product_path) do %>
-			  		<i class="icon-glass"></i> 	<strong>New Product</strong></a>
-			  <% end %>
-			  </li>
-			  <li><%= link_to(account_path(current_user)) do %>
-			  		<i class="icon-user"></i> 	<strong>My Account</strong></a>
-			  <% end %>
-			  </li>
-			  <li>
-			  <%= link_to(logout_path, :method => :delete, :confirm => "Are you sure you want to logout?") do %>
-			  		<i class="icon-off"></i>  		<strong>Logout</strong>
-			  <% end %>
-			  </li>
+			  
+				<!-- Products-dropdown-navbar -->  			
+				<li class="dropdown"> 
+					<%= link_to("#",:class=>"dropdown-toggle", :'data-toggle' => "dropdown") do %>
+					Product <b class="caret"></b>
+					<% end %>
+				    <ul class="dropdown-menu"> 
+				      <li>
+						<%= link_to(products_path) do %>
+					  	<i class="icon-align-justify"></i>	<strong>Product List</strong></a>
+						<% end %>
+					  </li> 
+				      <li>
+				  		<%= link_to(new_product_path) do %>
+				  		<i class="icon-glass"></i> 	<strong>New Product</strong></a>
+				  		<% end %>
+				  	  </li> 
+				      <li class="divider"></li> 
+				    </ul> 
+				</li>
+				
+				<!-- User-account-navbar -->
+				<li>
+					<%= link_to(account_path(current_user)) do %>
+					<i class="icon-user"></i> 	<strong>My Account</strong></a>
+					<% end %>
+				</li>
+				
+				<!-- Logout-navbar -->
+				<li>
+					<%= link_to(logout_path, :method => :delete, :confirm => "Are you sure you want to logout?") do %>
+					<i class="icon-off"></i>  		
+					<strong>Logout</strong>
+				<% end %>
+				</li>
 			<% end %>
-	        <li class="dropdown"> 
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> 
-                <ul class="dropdown-menu"> 
-                  <li><a href="#">Action</a></li> 
-                  <li><a href="#">Another action</a></li> 
-                  <li class="divider"></li> 
-                  <li class="nav-header">Nav header</li> 
-                  <li><a href="#">Separated link</a></li> 
-                </ul> 
-              </li> 
+
 	        </ul> 
 	      </div><!--/.nav-collapse --> 
 		
@@ -73,7 +82,7 @@
 	<div class="container"> 
 	  <hr> 
 	  <footer> 
-	    <p>&copy; Company 2013</p> 
+	    <p> http://bootswatch.com/    http://bootsnipp.com &copy; Company 2013</p> 
 	  </footer> 
 	</div> <!-- /container -->
 <%= javascript_include_tag "application" %>

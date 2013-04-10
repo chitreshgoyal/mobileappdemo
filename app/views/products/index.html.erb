@@ -1,14 +1,8 @@
 <h2>Listing products</h2>
-
 <%#= table_for(@products) do |product|
 #  product.data :actions=>:all
 # end %>
-
-<%# @a =Time.now%>
-<%#= debug sort_data(@products) %>
-<%#= Time.now-@a %>
-<%#= debug sort_data(@products) %>
-	<%= link_to "New Product", new_product_path, :class=>"btn btn-primary" %>
+<%= link_to "New Product", new_product_path, :class=>"btn btn-primary" %>
 <div class="well">
     <table class="table">
       <thead>
@@ -31,18 +25,16 @@
           <td><%= product.brand %></td>
           <td><%= product.price %></td>
           <td><%= product.quantity %></td>
-          <td>
-   	  	<%#= link_to "#{product.name} #{product.sku}", chitresh_url(:name=>"#{product.name}", :id=>"#{product.id}") %>
-				<%= link_to(products_path) do %>
-					<i class="icon-eye-open icon-black"></i>
-				<% end %>
-				<%= link_to(edit_product_path(product)) do %>
-					<i class="icon-edit icon-black"></i>
-				<% end %>
-				<%= link_to(product, method: :delete, data: { confirm: 'Are you sure?' }) do %>
-					<i class="icon-trash"></i>
-				<% end %>	
-	
+          <td><%#= link_to "#{product.name} #{product.sku}", chitresh_url(:name=>"#{product.name}", :id=>"#{product.id}") %>
+			  <%= link_to(product_path(product)) do %>
+			  <i class="icon-eye-open icon-black"></i>
+			  <% end %>
+			  <%= link_to(edit_product_path(product)) do %>
+			  <i class="icon-edit icon-black"></i>
+			  <% end %>
+			  <%= link_to(product, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+			  <i class="icon-trash"></i>
+			  <% end %>	
           </td>
         </tr>
 		<% end %>
