@@ -1,7 +1,7 @@
 <div class="container well"> 
 <div class="span3">
     <h3>Sign Up</h3>
-	<%= form_for(@user,:html => {:class=> "form-horizontal" }) do |f| %>	
+	<%= form_for(@user, :validate => true, :html => {:class=> "form-horizontal" }) do |f| %>	
 		<%= render :partial => "form",  :object => f, :locals => { :user => @user } %>
 		
 		<!-- Captcha-Code-->

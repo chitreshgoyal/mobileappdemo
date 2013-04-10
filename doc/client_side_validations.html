@@ -1,0 +1,27 @@
+Gemfile:
+	
+	gem 'client_side_validations', '3.2.5'
+
+Setup:
+
+	rails g client_side_validations:install
+	
+	rails g client_side_validations:copy_assets
+
+app/assets/javascripts/application.js
+
+	//= require rails.validations
+	
+
+form:
+
+	<%= form_for @user, :validate => true do |f| %>
+	
+model:
+	
+	normal validation field
+	
+src:
+	
+	https://github.com/bcardarella/client_side_validations
+	

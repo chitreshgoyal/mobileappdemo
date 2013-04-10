@@ -33,6 +33,7 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     builder (3.0.4)
+    client_side_validations (3.2.5)
     cloud_search (0.1.9)
       rest-client (~> 1.6.7)
     coffee-rails (3.2.2)
@@ -115,9 +116,10 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic
+  client_side_validations (= 3.2.5)
   cloud_search
   coffee-rails (~> 3.2.1)
-  galetahub-simple_captcha
+  galetahub-simple_captcha (= 0.1.5)
   jquery-rails
   mysql2
   rails (= 3.2.9)

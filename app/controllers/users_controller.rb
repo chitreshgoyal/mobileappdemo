@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
    before_filter :require_no_user, :only => [:new, :create]
-   before_filter :require_user, :only => [:show, :edit, :update]
+   before_filter :require_user, :only => [:show, :edit, :update, :role_user_list]
 
   def new
     @user = User.new
@@ -11,14 +11,15 @@ class UsersController < ApplicationController
     # Saving without session maintenance to skip
     # auto-login which can't happen here because
     # the User has not yet been activated
-    if @user.save
-      flash[:notice] = "Your account has been created."
-      redirect_to signup_url
+    if @user.valid_with_captcha?
+      if @user.save
+        flash[:notice] = "Your account has been created."
+        redirect_to signup_url
+      end
     else
       flash[:notice] = "There was a problem creating you."
       render :action => :new
     end
-
   end
 
   def show
@@ -37,6 +38,11 @@ class UsersController < ApplicationController
     else
       render :action => :edit
     end
+  end
+  
+  def role_user_list
+    @users = User.all
+    @roles = Role.all
   end
   
 end

@@ -10,7 +10,9 @@ gem 'tabletastic'
 gem 'rest-client'
 gem 'authlogic'
 gem 'cloud_search'
-gem "galetahub-simple_captcha", '0.1.5', :require => "simple_captcha"
+gem 'galetahub-simple_captcha', '0.1.5', :require => "simple_captcha"
+gem 'client_side_validations', '3.2.5'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

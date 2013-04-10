@@ -19,6 +19,18 @@ FormBuilder helper:
 
 	<%= form.simple_captcha :label => "Enter numbers.." %>
 	
+Controller:
+
+    if @user.valid_with_captcha?
+      if @user.save
+        flash[:notice] = "Your account has been created."
+        redirect_to signup_url
+      end
+    else
+      flash[:notice] = "There was a problem creating you."
+      render :action => :new
+    end
+
 
 Src:
 	

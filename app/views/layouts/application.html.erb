@@ -4,6 +4,8 @@
   <title>Mobileapp</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "application" %>
+    
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -48,6 +50,13 @@
 				    </ul> 
 				</li>
 				
+				<!-- Assign-Roles -->
+				<li>
+					<%= link_to(role_user_path) do %>
+					<i class="icon-pencil"></i> 	<strong>Roles</strong></a>
+					<% end %>
+				</li>
+				
 				<!-- User-account-navbar -->
 				<li>
 					<%= link_to(account_path(current_user)) do %>
@@ -85,6 +94,6 @@
 	    <p> http://bootswatch.com/    http://bootsnipp.com &copy; Company 2013</p> 
 	  </footer> 
 	</div> <!-- /container -->
-<%= javascript_include_tag "application" %>
+
 </body>
 </html>

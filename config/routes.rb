@@ -12,7 +12,13 @@ Mobileapp::Application.routes.draw do
   match 'signup' => 'users#new', :as => :signup
   
   match 'productlist' => 'products#index', :as=>'productpage'
+  
+  match 'role_user' => 'users#role_user_list'
+  
+  
   match "/:name" => "products#product_info", :as => :chitresh
+  
+ 
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
