@@ -1,0 +1,38 @@
+<div class="container well"> 
+	<div class="span3">
+		<h3>Editing role</h3>
+		
+		<%= link_to 'Back', role_path, :class=> "btn btn-success btn-small" %>
+		
+		<%= form_for(@role,:html => {:class=> "form-horizontal" }) do |f| %>
+			
+			<%= render "shared/error_messages", :target => @role %>
+			
+			<fieldset>
+			<!-- role-name input-->
+		    <div class="control-group">
+		        <%= f.label :role, :class=> "control-label" %>
+		        <div class="controls">
+					<%= @role.id %>
+		            <p class="help-block"></p>
+		        </div>
+		    </div>
+
+
+			<!-- role-name input-->
+		    <div class="control-group">
+		        <%= f.label :name, :class=> "control-label" %>
+		        <div class="controls">
+					<%= f.text_field :name, :class=> "input-xlarge", :placeholder=> "Ex. Chitresh Goyal" %>
+		            <p class="help-block"></p>
+		        </div>
+		    </div>
+		    
+			</fieldset>
+			
+			<%= f.submit "Update", :class=> "btn btn-primary pull-right" %>
+			
+		<% end %>
+	
+	</div>
+</div>

@@ -5,6 +5,7 @@ Mobileapp::Application.routes.draw do
   resources :products
   resources :users  # give us our some normal resource routes for users
   resources :users, :as => 'accounts'  # a convenience route  
+  resources :roles
   
   match 'login', :to => "user_sessions#new", :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
@@ -15,6 +16,7 @@ Mobileapp::Application.routes.draw do
   
   match 'role_user' => 'users#role_user_list'
   
+  match 'update_user_role' => 'users#update_user_role', :as=>'update_user_role'
   
   match "/:name" => "products#product_info", :as => :chitresh
   

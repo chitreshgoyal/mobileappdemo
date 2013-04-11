@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
    before_filter :require_no_user, :only => [:new, :create]
-   before_filter :require_user, :only => [:show, :edit, :update, :role_user_list]
+   before_filter :require_user, :only => [:show, :edit, :update, :role_user_list, :update_user_role]
 
   def new
     @user = User.new
@@ -44,5 +44,20 @@ class UsersController < ApplicationController
     @users = User.all
     @roles = Role.all
   end
+  
+  def update_user_role
+    
+    @user = User.find(params[:user_id])
+    if @user.update_attribute('role_id', params[:role_id])
+      status = { :status => true, :message => "Updated", :html => '<i class="icon-ok-sign icon-black"></i> '}
+    else
+      status = { :status => false, :message => "Failed", :html => '<i class="icon-minus-sign icon-black"></i> '}
+    end
+    
+    respond_to do |format|
+      format.json { render json: status }
+    end
+  end
+  
   
 end
