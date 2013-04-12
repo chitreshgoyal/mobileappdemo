@@ -1,0 +1,21 @@
+<%= form_tag update_multiple_roles_path, method: :put do %>
+  <table>
+    <tr>
+      <th></th>
+      <% @features.each do |feature| %>
+        <th><%= feature.name %></th>
+      <% end %>
+    </tr>
+    <% @roles.each do |role| %>
+      <tr>
+        <th><%= role.name %></th>
+        <% @features.each do |feature| %>
+          <td><%= check_box_tag "roles[#{role.id}][feature_ids][]", feature.id, role.features.include?(feature) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= submit_tag "Save" %>
+<% end %>
+

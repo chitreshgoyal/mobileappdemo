@@ -1,0 +1,33 @@
+<%= render "shared/success_messages", :target => @user_session %>   
+
+<div class="container">
+<h3>Features</h3>
+<%= link_to "New Feature", new_feature_path, :class=>"btn btn-primary" %>
+<table class="table well">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% @features.each do |feature| %>
+		<tr>
+		    <td><%= feature.id %></td>
+		    <td><%= feature.name %></td>
+			<td><%= link_to(edit_feature_path(feature)) do %>
+			  <i class="icon-edit icon-black"></i>
+			  <% end %>
+			  <%= link_to(feature, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+			  <i class="icon-trash"></i>
+			  <% end %>	
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+
+<br />
+
+</div>

@@ -1,5 +1,5 @@
 class RolesController < ApplicationController
-   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
+   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy, :set_permission]
 
   def index
     @roles = Role.all
@@ -52,4 +52,33 @@ class RolesController < ApplicationController
     end
       
   end
+  
+  def set_permission
+    @roles = Role.all
+    @features = Feature.all
+    
+  end
+  
+  def update_multiple
+    render :text=>'<pre>'+params[:roles].values.to_yaml and return
+    params[:roles] = {} unless params.has_key?(:roles) # if all checkboxes unchecked.
+    Role.all.each do |role|
+      # this allows for 0 permission checkboxes being checked for a role.
+      unless params[:roles].has_key?(role.id.to_s)
+        params[:roles][role.id] = { feature_id: [] }
+        @permission = Permission.new
+        @permission.role_id = role.id
+        @permission.feature_id = params[:roles].values
+        @permission.save
+      end
+    end
+    #@set_permissions = Permission.update(params[:roles].keys, params[:roles].values )
+    #@set_permissions.reject! { |r| r.errors.empty? }
+    if @set_permissions.empty?
+      redirect_to set_permission_path
+    else
+      render :set_permission
+    end
+  end
+  
 end
