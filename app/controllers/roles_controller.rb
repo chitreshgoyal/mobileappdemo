@@ -73,7 +73,7 @@ class RolesController < ApplicationController
     
     @permissions.reject! { |r| r.errors.empty? }
     if @permissions.empty?
-      redirect_to set_permission_path
+      redirect_to set_permission_path, notice: 'Roles permissions updated successfully.'
     else
       render :set_permission
     end

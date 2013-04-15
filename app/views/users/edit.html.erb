@@ -4,8 +4,8 @@
 		
 		<%= link_to 'Back', user_path, :class=> "btn btn-success btn-small" %>
 		
-		<%= form_for(@user,:html => {:class=> "form-horizontal" }) do |f| %>
-			
+		<%= form_for(@user,:html => {:multipart => true, :class=> "form-horizontal" }) do |f| %>
+			<%= f.file_field :profile_pic %>
 			<%= render :partial => "form",  :object => f, :locals => { :user => @user } %>
 			<%= f.submit "Update", :class=> "btn btn-primary pull-right" %>
 			

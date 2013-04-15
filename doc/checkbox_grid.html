@@ -1,0 +1,104 @@
+# /config/routes.rb
+
+resources :roles do
+  collection do
+    get :edit_multiple
+    put :update_multiple
+  end
+end
+
+
+# /app/controllers/roles_controller.rb
+
+class RolesController < ApplicationController
+  def edit_multiple
+    @roles = Role.all
+    @permissions = Permission.all
+  end
+
+  def update_multiple
+    params[:roles] = {} unless params.has_key?(:roles) # if all checkboxes unchecked.
+    Role.all.each do |role|
+      # this allows for 0 permission checkboxes being checked for a role.
+      unless params[:roles].has_key?(role.id.to_s)
+        params[:roles][role.id] = { permission_ids: [] }
+      end
+    end
+    @roles = Role.update(params[:roles].keys, params[:roles].values)
+    @roles.reject! { |r| r.errors.empty? }
+    if @roles.empty?
+      redirect_to edit_multiple_roles_path
+    else
+      render :edit_multiple
+    end
+  end
+end
+
+
+# /app/views/roles/edit_multiple.html.erb
+
+<%= form_tag update_multiple_roles_path, method: :put do %>
+  <table>
+    <tr>
+      <th></th>
+      <% @permissions.each do |permission| %>
+        <th><%= permission.name %></th>
+      <% end %>
+    </tr>
+    <% @roles.each do |role| %>
+      <tr>
+        <th><%= role.name %></th>
+        <% @permissions.each do |permission| %>
+          <td><%= check_box_tag "roles[#{role.id}][permission_ids][]", permission.id, role.permissions.include?(permission) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= submit_tag "Save" %>
+<% end %>
+
+
+# /app/models/role.rb
+
+class Role < ActiveRecord::Base
+  has_many :role_permissions
+  has_many :permissions, through: :role_permissions
+  attr_accessible :name, :permission_ids
+end
+
+
+
+
+
+-------------vertical form----------------------------
+
+
+
+# /app/views/roles/edit_multiple.html.erb
+
+<%= form_tag update_multiple_roles_path, method: :put do %>
+  <table>
+    <tr>
+      <th></th>
+      <% @roles.each do |role| %>
+        <th><%= role.name %></th>
+      <% end %>
+    </tr>
+    <% @permissions.each do |permission| %>
+      <tr>
+        <th><%= permission.name %></th>
+        <% @roles.each do |role| %>
+          <td><%= check_box_tag "roles[#{role.id}][permission_ids][]", permission.id, role.permissions.include?(permission) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= submit_tag "Save" %>
+<% end %>
+
+
+
+source: 
+		http://stackoverflow.com/questions/15345310/how-to-create-a-checkbox-grid-using-a-has-many-through-association

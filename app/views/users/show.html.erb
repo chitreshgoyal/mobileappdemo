@@ -7,7 +7,7 @@
 <div class="span6 well">
 	<div class="row">
 		<div class="span1">
-				<%= link_to image_tag("user.jpg", :class => "img-circle"),{:action => 'show', :controller => 'users'}, {:class=>"thumbnail"} %>
+				<%= link_to image_tag(@user.profile_pic.url(:medium)),{:action => 'show', :controller => 'users'}, {:class=>"thumbnail"} %>
 		</div>
 		<div class="span4">		
 				<p><%= @user.role.name.capitalize %></p>

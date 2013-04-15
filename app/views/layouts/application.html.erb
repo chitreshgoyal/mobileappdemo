@@ -56,13 +56,6 @@
 					<i class="icon-pencil"></i> 	<strong>Assign Roles</strong></a>
 					<% end %>
 				</li>
-				
-				<!-- User-account-navbar -->
-				<li>
-					<%= link_to(account_path(current_user)) do %>
-					<i class="icon-user"></i> 	<strong>My Account</strong></a>
-					<% end %>
-				</li>
 
 				<!-- Settings -->
 
@@ -97,6 +90,16 @@
 					<strong>Logout</strong>
 				<% end %>
 				</li>
+				
+				<!-- User-account-navbar -->
+				<li>
+					<%= link_to(account_path(current_user)) do %>
+					<!-- <i class="icon-user"></i> -->
+					<%= image_tag current_user.profile_pic.url(:thumb), {:height => 30, :width => 30, :class => "img-polaroid"}%>
+					<strong>My Account</strong>
+					<% end %>
+				</li>
+
 			<% end %>
 
 	        </ul> 

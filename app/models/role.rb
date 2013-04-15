@@ -3,5 +3,4 @@ class Role < ActiveRecord::Base
   has_many :usres, :dependent => :destroy
   has_many :permissions
   has_many :features, :through => :permissions
-#  accepts_nested_attributes_for :features
 end
