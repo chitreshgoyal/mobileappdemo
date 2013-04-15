@@ -60,21 +60,19 @@ class RolesController < ApplicationController
   end
   
   def update_multiple
-    render :text=>'<pre>'+params[:roles].values.to_yaml and return
+   #render :text=>'<pre>'+params[:roles].to_yaml and return
     params[:roles] = {} unless params.has_key?(:roles) # if all checkboxes unchecked.
     Role.all.each do |role|
       # this allows for 0 permission checkboxes being checked for a role.
       unless params[:roles].has_key?(role.id.to_s)
-        params[:roles][role.id] = { feature_id: [] }
-        @permission = Permission.new
-        @permission.role_id = role.id
-        @permission.feature_id = params[:roles].values
-        @permission.save
+        params[:roles][role.id] = { feature_ids: [] }
       end
     end
-    #@set_permissions = Permission.update(params[:roles].keys, params[:roles].values )
-    #@set_permissions.reject! { |r| r.errors.empty? }
-    if @set_permissions.empty?
+
+    @permissions = Role.update(params[:roles].keys, params[:roles].values)
+    
+    @permissions.reject! { |r| r.errors.empty? }
+    if @permissions.empty?
       redirect_to set_permission_path
     else
       render :set_permission

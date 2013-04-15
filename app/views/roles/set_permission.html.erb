@@ -1,21 +1,26 @@
 <%= form_tag update_multiple_roles_path, method: :put do %>
-  <table>
+  <div class="well">
+  <table class="table">
+  	<thead>
     <tr>
       <th></th>
-      <% @features.each do |feature| %>
-        <th><%= feature.name %></th>
+      <% @roles.each do |role| %>
+        <th><%= role.name %></th>
       <% end %>
     </tr>
-    <% @roles.each do |role| %>
+    </thead>
+    <tbody>
+    <% @features.each do |feature| %>
       <tr>
-        <th><%= role.name %></th>
-        <% @features.each do |feature| %>
+        <th><%= feature.name %></th>
+        <% @roles.each do |role| %>
           <td><%= check_box_tag "roles[#{role.id}][feature_ids][]", feature.id, role.features.include?(feature) %></td>
         <% end %>
       </tr>
     <% end %>
+    </tbody>
   </table>
-
-  <%= submit_tag "Save" %>
+  <%= submit_tag "Assign", :class=>"btn btn-primary" %>
+  </div>
+  
 <% end %>
-
