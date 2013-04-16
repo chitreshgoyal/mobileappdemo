@@ -50,10 +50,18 @@
 				    </ul> 
 				</li>
 				
+				<!-- Create-Post-navbar -->
+				<li>
+					<%= link_to(new_post_path) do %>
+					<i class="icon-pencil"></i>
+					<strong>Create Post</strong>
+					<% end %>
+				</li>
+				
 				<!-- Assign-Roles -->
 				<li>
 					<%= link_to(role_user_path) do %>
-					<i class="icon-pencil"></i> 	<strong>Assign Roles</strong></a>
+					<i class="icon-user"></i> 	<strong>Assign Roles</strong></a>
 					<% end %>
 				</li>
 
@@ -94,7 +102,6 @@
 				<!-- User-account-navbar -->
 				<li>
 					<%= link_to(account_path(current_user)) do %>
-					<!-- <i class="icon-user"></i> -->
 					<%= image_tag current_user.profile_pic.url(:thumb), {:height => 30, :width => 30, :class => "img-polaroid"}%>
 					<strong>My Account</strong>
 					<% end %>

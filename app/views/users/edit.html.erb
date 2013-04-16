@@ -5,8 +5,20 @@
 		<%= link_to 'Back', user_path, :class=> "btn btn-success btn-small" %>
 		
 		<%= form_for(@user,:html => {:multipart => true, :class=> "form-horizontal" }) do |f| %>
-			<%= f.file_field :profile_pic %>
+			
 			<%= render :partial => "form",  :object => f, :locals => { :user => @user } %>
+			
+			<!-- User-Profile_picture input-->
+		    <div class="control-group">
+		        <%= f.label :profile_pic, :class=> "control-label" %>
+		        <div class="controls">
+		        	<div class="fileupload-preview thumbnail" style="width: 70px; height: 52px;">
+					  	<%= image_tag @user.profile_pic.url(:medium) if @user.profile_pic? %></div>
+				    <div>
+					<%= f.file_field :profile_pic, :class=> "btn fileupload-new" %>
+		            <p class="help-block"></p>
+		        </div>
+		    </div>
 			<%= f.submit "Update", :class=> "btn btn-primary pull-right" %>
 			
 		<% end %>

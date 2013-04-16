@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  heading: MyText
+  user_id: 1
+  published_date: 2013-04-16 12:25:33
+  keywords: MyText
+  resources: MyText
+  end_date: 2013-04-16 12:25:33
+
+two:
+  heading: MyText
+  user_id: 1
+  published_date: 2013-04-16 12:25:33
+  keywords: MyText
+  resources: MyText
+  end_date: 2013-04-16 12:25:33
