@@ -1,0 +1,39 @@
+<%= render "layouts/blog_right_sidebar", :target => @posts %>
+
+<div class="container-fluid">
+
+<% @posts.each do |post| %>
+<div class="well">
+	
+	<div class="row">
+		<div class="span1" style="margin-top: 12px;">
+	    	<%= link_to image_tag(post.user.profile_pic.url(:medium)),{:action => 'show', :controller => 'users', :id=> post.user.id}, {:class=>"thumbnail"} %>
+	    </div>
+	    
+	    <div style="margin-left: 100px;">
+		    <h4><%= link_to post.heading.capitalize %></h4>
+	    	@<%= post.user.name.capitalize %> on <%= post.published_date.strftime("%A, %B %d, %Y at %l%p") unless post.published_date.nil? %><br />
+	    </div>
+    </div>
+    
+    <div class="row">
+    	<div class="span1">&nbsp;
+    	</div>
+		
+		<div style="margin-left: 100px;">
+		    <%#= post.created_at.strftime("%A, %B %d, %Y at %l%p") %>
+		    <%#= post.end_date %>
+		    <%#= post.keywords %><br />
+		    <%= post.description %><br />
+		    <%= post.resources %><br /><br />
+		    
+		    <%= link_to "Read More" do %>
+		    <strong>Read More</strong>
+		    <i class=" icon-arrow-right"></i>
+		    <% end %>
+    	</div>
+    </div>
+</div>
+<% end %>
+	
+</div>

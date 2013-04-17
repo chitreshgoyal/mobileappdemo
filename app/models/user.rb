@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   
   belongs_to :role
+  has_many :posts
   
   validates_presence_of :name, :login, :email, :password
   validates_uniqueness_of :login, :email, :message => "is invalid"

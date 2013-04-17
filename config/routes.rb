@@ -29,8 +29,10 @@ Mobileapp::Application.routes.draw do
   
   match 'set_permission' => 'roles#set_permission', :as => 'set_permission'
   
-  match "/:name" => "products#product_info", :as => :chitresh
+  match 'my_posts' => 'posts#index', :as => 'my_posts'
+  match 'blog' => 'posts#blog'
   
+  match "/:name" => "products#product_info", :as => :chitresh
  
   
   # Sample of regular route:
@@ -80,7 +82,7 @@ Mobileapp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
    #root :to => 'products#index'
-   root :to => 'user_sessions#new'
+   root :to => 'posts#blog'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
+ #  before_filter :require_no_user, :only => [:new, :create]
+   before_filter :require_user, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = current_user.posts
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +47,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -78,6 +81,15 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def blog
+    @posts = Post.all
+
+    respond_to do |format|
+      format.html# index.html.erb
+      format.json { render json: @posts }
     end
   end
 end

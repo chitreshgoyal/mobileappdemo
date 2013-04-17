@@ -1,33 +1,41 @@
-<h1>Listing posts</h1>
+<h3>My posts</h3>
+<%= link_to 'New Post', new_post_path, :class=>"btn btn-primary" %>
 
-<table>
+<div class="well">
+<table class="table">
+  <thead>
   <tr>
     <th>Heading</th>
-    <th>User</th>
-    <th>Published date</th>
     <th>Keywords</th>
     <th>Resources</th>
+    <th>Published date</th>
     <th>End date</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Action</th>
   </tr>
-
+  </thead>
+  <tbody>
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.heading %></td>
-    <td><%= post.user_id %></td>
-    <td><%= post.published_date %></td>
     <td><%= post.keywords %></td>
     <td><%= post.resources %></td>
+    <td><%= post.published_date %></td>
     <td><%= post.end_date %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   <td>
+	   <%#= link_to(post) do %>
+	   <!-- <i class="icon-eye-open icon-black"></i> -->
+	   <%# end %>
+	   <%= link_to(edit_post_path(post)) do %>
+	   <i class="icon-edit icon-black"></i>
+	   <% end %>
+	   <%= link_to(post, method: :delete, data: { confirm: 'Are you sure?' }) do %>
+	   <i class="icon-trash"></i>
+	   <% end %>	
+   </td>
   </tr>
 <% end %>
+  </tbody>
 </table>
+</div>
 
-<br />
 
-<%= link_to 'New Post', new_post_path %>
