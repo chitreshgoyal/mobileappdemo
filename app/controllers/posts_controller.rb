@@ -83,13 +83,28 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def blog
-    @posts = Post.all
 
+ #----------------- do not add in filter require_user & require_no_user -----------------public access-----  
+  def blog
+    if params[:month]
+      @posts = Post.all.select { |post| post.created_at.beginning_of_month.strftime("%B %Y").eql?(params[:month]) }
+    else
+      @posts = Post.all
+    end
+    
     respond_to do |format|
-      format.html# index.html.erb
+      format.html # index.html.erb
       format.json { render json: @posts }
     end
   end
+  
+  def blog_read_more
+    @post = Post.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @post }
+    end
+  end
+  
 end

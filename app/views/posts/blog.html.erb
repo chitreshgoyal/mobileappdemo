@@ -1,6 +1,4 @@
-<%= render "layouts/blog_right_sidebar", :target => @posts %>
-
-<div class="container-fluid">
+<div class="container-fluid" style="position: relative; z-index: 0; width: 70%; float: left;">
 
 <% @posts.each do |post| %>
 <div class="well">
@@ -27,7 +25,7 @@
 		    <%= post.description %><br />
 		    <%= post.resources %><br /><br />
 		    
-		    <%= link_to "Read More" do %>
+		    <%= link_to(read_more_url(:heading=>"#{post.heading}",:id=>"#{post.id}")) do %>
 		    <strong>Read More</strong>
 		    <i class=" icon-arrow-right"></i>
 		    <% end %>
@@ -37,3 +35,5 @@
 <% end %>
 	
 </div>
+
+<%= render "blog_right_sidebar", :target => @posts %>

@@ -31,8 +31,11 @@ Mobileapp::Application.routes.draw do
   
   match 'my_posts' => 'posts#index', :as => 'my_posts'
   match 'blog' => 'posts#blog'
+  match "/:month" => 'posts#blog', :as => :blog_archive
+  match "/blog/(:heading)" => "posts#blog_read_more", :as => :read_more
   
-  match "/:name" => "products#product_info", :as => :chitresh
+  
+  #match "/:name" => "products#product_info", :as => :chitresh
  
   
   # Sample of regular route:

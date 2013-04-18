@@ -1,0 +1,23 @@
+<div class="container" style="float: left; width: 20%;">
+<div class="well">
+	<h4>Categories</h4>
+	<hr />
+	<br />
+	<br />
+	<br />
+	
+	<h4>Archive</h4>
+	<hr />
+	
+	<% archive.each do |published_archive, posts| %>
+	
+		<%= link_to(blog_archive_url(published_archive.strftime("%B %Y")) ) do %>
+			<strong><%= published_archive.strftime("%B %Y") %></strong>(<%= posts.count %>)<br />
+		<% end %>
+		
+	<% end %>
+	
+</div>
+</div>
+
+
