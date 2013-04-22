@@ -2,55 +2,55 @@
 <fieldset>
   <%= render "shared/error_messages", :target => @post %>
 
-	<div class="control-group">
-		<%= f.label :heading, :class=> "control-label" %>
-		<div class="controls">
-			<%= f.text_area :heading, :rows=>"4" %>
-			<p class="help-block"></p>
-		</div>
-	</div>
-	  
-	<%= f.hidden_field :user_id, :value=>current_user.id %>
-	  
-	<!-- <div class="control-group">
-		<%#= f.label :published_date, :class=> "control-label" %>
-		<div class="controls">
-			<%#= f.datetime_picker :published_date %>
-			<p class="help-block"></p>
-		</div>
-	</div> -->
-	  
-	<div class="control-group">
-		<%= f.label :keywords, :class=> "control-label" %>
-		<div class="controls">
-			<%= f.text_area :keywords, :rows=>"4" %>
-			<p class="help-block"></p>
-		</div>
-	</div>
-	  
-	<div class="control-group">
-		<%= f.label :resources, :class=> "control-label" %>
-		<div class="controls">
-			<%= f.text_area :resources, :rows=>"3" %>
-			<p class="help-block"></p>
-		</div>
-	</div>
+  <div class="control-group">
+    <%= f.label :heading, :class=> "control-label" %>
+    <div class="controls">
+      <%= f.cktext_area :heading %>
+      <p class="help-block"></p>
+    </div>
+  </div>
+    
+  <%= f.hidden_field :user_id, :value=>current_user.id %>
+    
+  <!-- <div class="control-group">
+    <%#= f.label :published_date, :class=> "control-label" %>
+    <div class="controls">
+      <%#= f.datetime_picker :published_date %>
+      <p class="help-block"></p>
+    </div>
+  </div> -->
+    
+  <div class="control-group">
+    <%= f.label :keywords, :class=> "control-label" %>
+    <div class="controls">
+      <%= f.text_area :keywords, :rows=>"4" %>
+      <p class="help-block"></p>
+    </div>
+  </div>
+    
+  <div class="control-group">
+    <%= f.label :resources, :class=> "control-label" %>
+    <div class="controls">
+      <%= f.text_area :resources, :rows=>"3" %>
+      <p class="help-block"></p>
+    </div>
+  </div>
 
-	<div class="control-group">
-		<%= f.label :description, :class=> "control-label" %>
-		<div class="controls">
-			<%= f.text_area :description, :rows=>"4" %>
-			<p class="help-block"></p>
-		</div>
-	</div>
-	
-	<!-- <div class="control-group">
-		<%#= f.label :end_date, :class=> "control-label" %>
-		<div class="controls">
-			<%#= f.datetime_picker :end_date %>
-			<p class="help-block"></p>
-		</div>
-	</div> -->
+  <div class="control-group">
+    <%= f.label :description, :class=> "control-label" %>
+    <div class="controls">
+      <%= f.cktext_area :description %>
+      <p class="help-block"></p>
+    </div>
+  </div>
+  
+  <!-- <div class="control-group">
+    <%#= f.label :end_date, :class=> "control-label" %>
+    <div class="controls">
+      <%#= f.datetime_picker :end_date %>
+      <p class="help-block"></p>
+    </div>
+  </div> -->
   
   <div class="actions">
     <%= f.submit "post",:class=> "btn btn-primary pull-right" %>

@@ -16,7 +16,9 @@ gem 'paperclip', '3.4.1'
 gem 'jquery_datepicker'
 gem 'mini_magick', '3.5.0'
 gem 'ckeditor', '4.0.4'
-#gem "carrierwave"
+gem 'carrierwave', '0.8.0'
+gem 'mini_magick', '3.5.0'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

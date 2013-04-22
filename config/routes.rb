@@ -1,5 +1,7 @@
 Mobileapp::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   resources :user_sessions
   resources :user_verifications
   resources :products

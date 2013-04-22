@@ -9,7 +9,7 @@
 	    </div>
 	    
 	    <div style="margin-left: 100px;">
-		    <h4><%= link_to post.heading.capitalize %></h4>
+		    <h4><%= link_to post.heading.html_safe %></h4>
 	    	@<%= post.user.name.capitalize %> on <%= post.published_date.strftime("%A, %B %d, %Y at %l%p") unless post.published_date.nil? %><br />
 	    </div>
     </div>
@@ -22,7 +22,7 @@
 		    <%#= post.created_at.strftime("%A, %B %d, %Y at %l%p") %>
 		    <%#= post.end_date %>
 		    <%#= post.keywords %><br />
-		    <%= post.description %><br />
+		    <%= post.description.html_safe %><br />
 		    <%= post.resources %><br /><br />
 		    
 		    <%= link_to(read_more_url(:heading=>"#{post.heading}",:id=>"#{post.id}")) do %>

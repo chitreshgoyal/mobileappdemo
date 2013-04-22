@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require rails.validations
+//= require ckeditor/init
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-ui-timepicker-addon
