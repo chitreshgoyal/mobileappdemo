@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416161228) do
+ActiveRecord::Schema.define(:version => 20130422092754) do
 
   create_table "admin_spree_users", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -107,28 +107,29 @@ ActiveRecord::Schema.define(:version => 20130416161228) do
   add_index "user_sessions", ["updated_at"], :name => "index_user_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string   "name",                     :default => "", :null => false
-    t.string   "login",                    :default => "", :null => false
-    t.string   "crypted_password",         :default => "", :null => false
-    t.string   "password_salt",            :default => "", :null => false
-    t.string   "email",                    :default => "", :null => false
-    t.string   "persistence_token",        :default => "", :null => false
-    t.string   "single_access_token",      :default => "", :null => false
-    t.string   "perishable_token",         :default => "", :null => false
-    t.integer  "login_count",              :default => 0,  :null => false
-    t.integer  "failed_login_count",       :default => 0,  :null => false
+    t.string   "name",                     :default => "",    :null => false
+    t.string   "login",                    :default => "",    :null => false
+    t.string   "crypted_password",         :default => "",    :null => false
+    t.string   "password_salt",            :default => "",    :null => false
+    t.string   "email",                    :default => "",    :null => false
+    t.string   "persistence_token",        :default => "",    :null => false
+    t.string   "single_access_token",      :default => "",    :null => false
+    t.string   "perishable_token",         :default => "",    :null => false
+    t.integer  "login_count",              :default => 0,     :null => false
+    t.integer  "failed_login_count",       :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.integer  "role_id"
     t.string   "profile_pic"
     t.string   "profile_pic_file_name"
     t.string   "profile_pic_content_type"
     t.integer  "profile_pic_file_size"
+    t.boolean  "verified",                 :default => false
   end
 
 end

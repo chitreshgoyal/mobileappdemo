@@ -34,6 +34,20 @@ Mobileapp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.action_mailer.default_url_options = { :host => 'http://localhost:3000' }
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :openssl_verify_mode => OpenSSL::SSL::VERIFY_NONE,
+    :address              => 'mail.tech-psi.net',
+    :port                 => 465,
+    :domain               => 'mail.tech-psi.net',
+    :user_name            => 'iptest@tech-psi.net',
+    :password             => 'Psc0123',
+    :ssl                  => true,
+    :authentication       => :login,
+    :enable_starttls_auto => true ,
+  }
 end
 
 CloudSearch.configure do |config|

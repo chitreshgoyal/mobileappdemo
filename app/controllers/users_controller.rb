@@ -13,6 +13,9 @@ class UsersController < ApplicationController
     # the User has not yet been activated
     if @user.valid_with_captcha?
       if @user.save
+        UserMailer.welcome_email(@user).deliver
+        @user.deliver_verification_instructions!
+        
         flash[:notice] = "Your account has been created."
         redirect_to signup_url
       end
@@ -49,7 +52,7 @@ class UsersController < ApplicationController
     
     @user = User.find(params[:user_id])
     if @user.update_attribute('role_id', params[:role_id])
-      status = { :status => true, :message => "Updated", :html => '<i class="icon-ok-sign icon-black"></i> '}
+      status = { :status => true, :message => "Updated", :html => '<i class="icon-ok-sign icon-black"></i>'}
     else
       status = { :status => false, :message => "Failed", :html => '<i class="icon-minus-sign icon-black"></i> '}
     end

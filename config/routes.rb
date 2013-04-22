@@ -1,6 +1,7 @@
 Mobileapp::Application.routes.draw do
 
   resources :user_sessions
+  resources :user_verifications
   resources :products
   resources :users  # give us our some normal resource routes for users
   resources :users, :as => 'accounts'  # a convenience route  
@@ -32,7 +33,7 @@ Mobileapp::Application.routes.draw do
   match 'my_posts' => 'posts#index', :as => 'my_posts'
   match 'blog' => 'posts#blog'
   match "/:month" => 'posts#blog', :as => :blog_archive
-  match "/blog/(:heading)" => "posts#blog_read_more", :as => :read_more
+  match "/blog/:heading/:id" => "posts#blog_read_more", :as => :read_more
   
   
   #match "/:name" => "products#product_info", :as => :chitresh
