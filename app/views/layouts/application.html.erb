@@ -54,7 +54,7 @@
 				<!-- Blog-Post-navbar-dropdown -->
 				<li class="dropdown"> 
 					<%= link_to("#",:class=>"dropdown-toggle", :'data-toggle' => "dropdown") do %>
-					<i class="icon-bold"></i>  Blog Post <b class="caret"></b>
+					<!-- <i class="icon-bold"></i> -->  Blog Post <b class="caret"></b>
 					<% end %>
 				    <ul class="dropdown-menu"> 
 				    	<!-- Create-Post-navbar -->
@@ -103,6 +103,11 @@
 				      <li>
 				  		<%= link_to(set_permission_path) do %>
 				  		<i class="icon-th"></i> 	<strong>Set Permission</strong></a>
+				  		<% end %>
+				  	  </li>
+				  	  <li>
+				  		<%= link_to(settings_path) do %>
+				  		<i class="icon-envelope"></i> 	<strong>Admin Email</strong></a>
 				  		<% end %>
 				  	  </li> 
 				    </ul> 

@@ -8,6 +8,7 @@ Mobileapp::Application.routes.draw do
   resources :users  # give us our some normal resource routes for users
   resources :users, :as => 'accounts'  # a convenience route  
   resources :posts
+  resources :settings
   resources :roles do
     collection do
       get :set_permission
@@ -16,9 +17,7 @@ Mobileapp::Application.routes.draw do
   end
   
   resources :features
-  
-  #mount Ckeditor::Engine => "/ckeditor"
-   
+ 
   match 'login', :to => "user_sessions#new", :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   
@@ -37,7 +36,7 @@ Mobileapp::Application.routes.draw do
   match "/:month" => 'posts#blog', :as => :blog_archive
   match "/blog/:heading/:id" => "posts#blog_read_more", :as => :read_more
   
-  
+ 
   #match "/:name" => "products#product_info", :as => :chitresh
  
   

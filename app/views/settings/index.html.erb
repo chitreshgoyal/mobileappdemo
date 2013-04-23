@@ -1,0 +1,28 @@
+<%= render "shared/success_messages", :target => @settings %>   
+
+<h3>Admin Configuration</h3>
+
+<%#= link_to "New user", new_user_path, :class=>"btn btn-primary" %>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Config Name</th>
+          <th>Config Value</th>
+        </tr>
+      </thead>
+      <tbody>
+		<% @settings.each do |setting| %>
+        <tr>
+          <td><%= setting.id %></td>
+          <td><%= setting.config_name %></td>
+          <td><%= setting.config_value  %>
+			<span id="success"></span>
+          </td>
+        </tr>
+		<% end %>
+      </tbody>
+    </table>
+</div>
